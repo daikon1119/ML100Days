@@ -1,0 +1,184 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,shrink-to-fit=no"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Language" content="zh-tw"/><meta property="og:title" content="D25：類別型特徵 - 均值編碼 - Cupoy"/><meta property="og:description" content="類別型特徵最重要的編碼 : 均值編碼，將標籤以目標均值取代"/><meta property="og:image" content="//kwassistfile.cupoy.com/61695F74776D6C313030/__COVERIMG__/medium?t&#61;1597826720351"/><meta property="og:url" content="https://www.cupoy.com/event/ml100/mission/1586225294187"/><meta property="og:type" content="website"/><meta name="description" content="類別型特徵最重要的編碼 : 均值編碼，將標籤以目標均值取代"/><meta property="keywords" content=""/><meta name="apple-itunes-app" content="app-id=597799429"><meta property="cp:newsitemid" content=""/><meta property="cp:cumatrixid" content=""/><meta property="cp:cumatrixitemid" content=""/><meta name="theme-color" content="#E62427"><link rel="manifest" href="/manifest.json"><link rel="shortcut icon" href="/favicon.ico"><link rel="preload stylesheet" href="/css/icomoon/style.css" media="none" as="style" onload='this.media="all"'/><link rel="preload stylesheet" href="/css/material-design-iconic-font/css/material-design-iconic-font.css" media="none" as="style" onload='this.media="all"'><link rel="stylesheet" href="/css/nbv/prism.min.css"/><link rel="preload stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,300italic,400italic,600italic,700,700italic,800,800italic" as="style" onload='this.media="all"'><link rel="stylesheet preload" as="style" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined"><base href="/"><title>D25：類別型特徵 - 均值編碼 - Cupoy</title><style>body,html{margin:0;padding:0}.cupoy{position:relative;width:100vw;height:100vh;background-color:#f0efee;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-moz-box-align:center;box-align:center;-webkit-align-items:center;-moz-align-items:center;-ms-align-items:center;-o-align-items:center;align-items:center;-ms-flex-align:center;-webkit-box-pack:center;-moz-box-pack:center;box-pack:center;-webkit-justify-content:center;-moz-justify-content:center;-ms-justify-content:center;-o-justify-content:center;justify-content:center;-ms-flex-pack:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.cupoy .text{font-size:32px;color:#c6bdbc;margin:20px auto 0}#ieNotSupport{position:fixed;top:0;left:0;right:0;bottom:0;margin:auto}#ieNotSupport img{max-width:100%}#ieNotSupport .content{padding:100px 20px 20px 20px;text-align:center}#ieNotSupport .desc{max-width:320px;margin:10px auto 10px;font-size:16px;line-height:26px}#ieNotSupport .linkBar{margin-top:20px;font-size:16px;line-height:26px}#ieNotSupport .explorer{display:inline-block;width:24px;height:24px;margin-right:10px;padding:0;border:none;text-align:center;cursor:pointer;vertical-align:bottom;color:#fff}#ienotsupport .explorer img{width:100%;height:100%}</style><link href="/static/css/22.5bb98248.chunk.css" rel="stylesheet"><link href="/static/css/main.59656269.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"><div class="cupoy"><img src="/images/logo-gray.png" alt="logo"/><div class="text">Loading...</div></div></div><div id="dropdownContainer" style="width:100%;height:100%;overflow:hidden;position:fixed;z-index:2010;pointer-events:none;top:0;left:0"></div><div class="seo-modal"><!-- Header內容轉成html內容，確保Header中的字在content中找的到 -->
+<!-- HTML Header meta tag中的內容轉content html -->
+<header>
+	<h1 class="title">D25：類別型特徵 - 均值編碼 - Cupoy</h1>
+	<p class="description">類別型特徵最重要的編碼 : 均值編碼，將標籤以目標均值取代</p>	
+</header>
+<!-- 依據不同的context讀取不同的Mustache partial -->
+<!-- 網站主要功能以及探索內容Bucket List Navigation Bar -->
+<!-- 網站主要連結 -->
+<nav>
+	<ul>
+		<li>
+			<a href="/home">首頁</a>
+		</li>
+		<li>
+			<a href="/kwassist/ai_tw">AI社群</a>
+			<ul>
+				<li>
+					<a href="/kwassist/ai_tw?layoutType=home" title="AI社群首頁">
+						AI社群首頁
+					</a>
+				</li>
+				<li>
+					<a href="/kwassist/ai_tw?layoutType=event" title="學習馬拉松">
+						學習馬拉松
+					</a>
+				</li>
+				<li>
+					<a href="/kwassist/ai_tw?layoutType=qa&type=kwassist" title="AI問答">
+						AI問答
+					</a>
+				</li>
+				<li>
+					<a href="/kwassist/ai_tw?layoutType=club" title="共學論壇">
+						共學論壇
+					</a>
+				</li>
+				<li>
+					<a href="/kwassist/ai_tw?layoutType=collection" title="共學課程">
+						共學課程
+					</a>
+				</li>
+				<li>
+					<a href="/kwassist/ai_tw?layoutType=expert" title="領域專家">
+						領域專家
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="/newsfeed/topstory">熱門新聞</a>
+			<ul>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/Hedonism_tw" title="享樂女性">
+						<h3>享樂女性</h3>
+						<p>享樂女性是一種有質感的生活方式，分享給所有獨立自主的女性關於美妝保養、健康醫療、情感生活等時尚資訊，讓妳勇敢地打造自己想要的生活和幸福。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/business_tw" title="商業">
+						<h3>商業</h3>
+						<p>提供產業資訊、企業人物專訪、企業故事、財經新聞等內容。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/tech_tw" title="科技">
+						<h3>科技</h3>
+						<p>提供科技新聞的相關分析意見、市場和業內人士關心的科技趨勢與內幕。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/InternationalFinance_tw" title="國際財經">
+						<h3>國際財經</h3>
+						<p>豐富的國際、兩岸、財經、房地產等相關新聞，以最新、即時又多元的內容，滿足您想了解國際趨勢的時事脈動。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/life_tw" title="生活">
+						<h3>生活</h3>
+						<p>提供時尚美容、教育、休閒興趣、健身、汽車等各種內容。讓每個人用不同視角探索世界，撰寫屬於自己回憶錄，讓生活更加的美好！</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/Fitness_tw" title="健身瘦身">
+						<h3>健身瘦身</h3>
+						<p>隨時更新所有關於健身、瘦身、健康等正確觀念和相關知識，目的是為了提倡運動，讓所有愛好運動的朋友們，擁有專業知識與健康人生！</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/Hipster_tw" title="文青聚落">
+						<h3>文青聚落</h3>
+						<p>「文青」是種文化，也是種潮流，更是一種生活態度，與眾不同的風格，就是要深深的品味再透露那孤芳自賞的氛圍。文青，就是跟別人不一樣！</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/CityTour_tw" title="城市食旅">
+						<h3>城市食旅</h3>
+						<p>國內外最豐富的旅遊行程、美食情報、旅遊新聞、旅遊住宿、休閒觀光及人氣美食介紹和實用旅遊指南...等相關資訊或懶人包分享，提供出遊計畫之參考。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/3CExpert_tw" title="3C達人">
+						<h3>3C達人</h3>
+						<p>專注於最新的3C科技產品與相關資訊，蒐羅目前科技趨勢觀察，以及網路當紅話題之新聞，持續關注您將成為名符其實的3C達人！</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/GamePlayer_tw" title="御宅學園">
+						<h3>御宅學園</h3>
+						<p>集結所有關於動畫、漫畫、電玩資訊，並蒐羅電腦用品等相關文章，為這群熱衷並熟悉次文化的御宅族打造一個專屬你們的新世界。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/Game_tw" title="遊戲">
+						<h3>遊戲</h3>
+						<p>提供不同類型、平台上的電玩遊戲介紹，隨著時代、載體、網路的演進，電玩已經不單單是一種娛樂，更是一種文化現象，是現代人們生活中常見的一種休閒方式。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/design_tw" title="設計">
+						<h3>設計</h3>
+						<p>蒐集世界各地的創意與設計類資訊，提供視覺設計、產品設計、空間設計、時尚設計等內容。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/Sports_tw" title="運動">
+						<h3>運動</h3>
+						<p>提供國內外運動完整資訊，包含國內外職棒、職籃、網球、足球、高爾夫等各類運動及運動新聞與奧運賽事動態，讓您隨時接收最新訊息。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/Babyhome_tw" title="親子家庭">
+						<h3>親子家庭</h3>
+						<p>分享親子家庭相關之新聞，包括育兒經驗、教養新知、親子交流、醫療健康...等資訊。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/WhiteCollar_tw" title="職場白領">
+						<h3>職場白領</h3>
+						<p>搜羅了所有與職場相關文章，包括創業、職涯、管理與策略、行銷等報導文章，讓你輕鬆成為職場超人。</p>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/newsfeed/topicgrp/Reading_tw" title="閱讀">
+						<h3>閱讀</h3>
+						<p>我們的生命有限，很多事情都無法親自去體驗。&#13;&#10;因此，利用閱讀、透過文字，我們可以超越時間和空間的限制，和任何人交談，獲取他們的經驗，開拓我們的視野，豐富我們的心靈。</p>
+					</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		<!-- Mix News Item List -->
+<div>
+	<ul>
+	</ul>
+</div>
+		<!-- Cumatrix List -->
+<div>
+	<ul>
+	</ul>
+</div>
+
+
+
+
+
+</div><script src="/js/vendor/nbv/marked.min.js"></script><script src="/js/vendor/nbv/prism.min.js" data-manual></script><script src="/js/vendor/nbv/prism-python.min.js" data-manual></script><script src="/js/vendor/nbv/nbv.js" data-manual></script><script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){})</script><script type="text/javascript">window.Beacon("init","8bfe921f-8f93-425b-bd24-49d2fc223f62")</script><script>!function(e,t,n,c,o,a,f){e.fbq||(o=e.fbq=function(){o.callMethod?o.callMethod.apply(o,arguments):o.queue.push(arguments)},e._fbq||(e._fbq=o),o.push=o,o.loaded=!0,o.version="2.0",o.queue=[],(a=t.createElement(n)).async=!0,a.src="https://connect.facebook.net/en_US/fbevents.js",(f=t.getElementsByTagName(n)[0]).parentNode.insertBefore(a,f))}(window,document,"script"),fbq("init","2357041951274145"),fbq("track","PageView")</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2357041951274145&ev=PageView&noscript=1"/></noscript><script>!function(e){function f(f){for(var d,a,n=f[0],b=f[1],o=f[2],u=0,l=[];u<n.length;u++)a=n[u],Object.prototype.hasOwnProperty.call(t,a)&&t[a]&&l.push(t[a][0]),t[a]=0;for(d in b)Object.prototype.hasOwnProperty.call(b,d)&&(e[d]=b[d]);for(i&&i(f);l.length;)l.shift()();return r.push.apply(r,o||[]),c()}function c(){for(var e,f=0;f<r.length;f++){for(var c=r[f],d=!0,a=1;a<c.length;a++){var b=c[a];0!==t[b]&&(d=!1)}d&&(r.splice(f--,1),e=n(n.s=c[0]))}return e}var d={},a={21:0},t={21:0},r=[];function n(f){if(d[f])return d[f].exports;var c=d[f]={i:f,l:!1,exports:{}};return e[f].call(c.exports,c,c.exports,n),c.l=!0,c.exports}n.e=function(e){var f=[];a[e]?f.push(a[e]):0!==a[e]&&{0:1,1:1,4:1,6:1,23:1,25:1,26:1,27:1,30:1,36:1,38:1,41:1,52:1,57:1,59:1,60:1,61:1}[e]&&f.push(a[e]=new Promise((function(f,c){for(var d="static/css/"+({}[e]||e)+"."+{0:"71916e70",1:"7812b4f9",2:"31d6cfe0",3:"31d6cfe0",4:"2d643c6b",5:"31d6cfe0",6:"728648ce",7:"31d6cfe0",8:"31d6cfe0",9:"31d6cfe0",10:"31d6cfe0",11:"31d6cfe0",12:"31d6cfe0",13:"31d6cfe0",14:"31d6cfe0",15:"31d6cfe0",16:"31d6cfe0",17:"31d6cfe0",18:"31d6cfe0",19:"31d6cfe0",23:"95556b7b",24:"31d6cfe0",25:"728648ce",26:"728648ce",27:"728648ce",28:"31d6cfe0",29:"31d6cfe0",30:"a17ebd6e",31:"31d6cfe0",32:"31d6cfe0",33:"31d6cfe0",34:"31d6cfe0",35:"31d6cfe0",36:"a17ebd6e",37:"31d6cfe0",38:"d092ac4c",39:"31d6cfe0",40:"31d6cfe0",41:"a17ebd6e",42:"31d6cfe0",43:"31d6cfe0",44:"31d6cfe0",45:"31d6cfe0",46:"31d6cfe0",47:"31d6cfe0",48:"31d6cfe0",49:"31d6cfe0",50:"31d6cfe0",51:"31d6cfe0",52:"a17ebd6e",53:"31d6cfe0",54:"31d6cfe0",55:"31d6cfe0",56:"31d6cfe0",57:"a17ebd6e",58:"31d6cfe0",59:"a17ebd6e",60:"a17ebd6e",61:"a17ebd6e",62:"31d6cfe0",63:"31d6cfe0",64:"31d6cfe0",65:"31d6cfe0",66:"31d6cfe0",67:"31d6cfe0",68:"31d6cfe0",69:"31d6cfe0",70:"31d6cfe0",71:"31d6cfe0",72:"31d6cfe0",73:"31d6cfe0",74:"31d6cfe0",75:"31d6cfe0",76:"31d6cfe0",77:"31d6cfe0",78:"31d6cfe0",79:"31d6cfe0",80:"31d6cfe0",81:"31d6cfe0",82:"31d6cfe0",83:"31d6cfe0",84:"31d6cfe0",85:"31d6cfe0",86:"31d6cfe0",87:"31d6cfe0",88:"31d6cfe0",89:"31d6cfe0",90:"31d6cfe0",91:"31d6cfe0",92:"31d6cfe0",93:"31d6cfe0",94:"31d6cfe0",95:"31d6cfe0",96:"31d6cfe0",97:"31d6cfe0",98:"31d6cfe0",99:"31d6cfe0",100:"31d6cfe0",101:"31d6cfe0",102:"31d6cfe0",103:"31d6cfe0",104:"31d6cfe0",105:"31d6cfe0",106:"31d6cfe0",107:"31d6cfe0",108:"31d6cfe0",109:"31d6cfe0",110:"31d6cfe0",111:"31d6cfe0",112:"31d6cfe0",113:"31d6cfe0",114:"31d6cfe0",115:"31d6cfe0",116:"31d6cfe0",117:"31d6cfe0",118:"31d6cfe0",119:"31d6cfe0",120:"31d6cfe0",121:"31d6cfe0",122:"31d6cfe0",123:"31d6cfe0",124:"31d6cfe0",125:"31d6cfe0",126:"31d6cfe0",127:"31d6cfe0",128:"31d6cfe0",129:"31d6cfe0",130:"31d6cfe0",131:"31d6cfe0",132:"31d6cfe0",133:"31d6cfe0",134:"31d6cfe0",135:"31d6cfe0",136:"31d6cfe0",137:"31d6cfe0",138:"31d6cfe0",139:"31d6cfe0",140:"31d6cfe0",141:"31d6cfe0",142:"31d6cfe0",143:"31d6cfe0",144:"31d6cfe0",145:"31d6cfe0",146:"31d6cfe0"}[e]+".chunk.css",t=n.p+d,r=document.getElementsByTagName("link"),b=0;b<r.length;b++){var o=(i=r[b]).getAttribute("data-href")||i.getAttribute("href");if("stylesheet"===i.rel&&(o===d||o===t))return f()}var u=document.getElementsByTagName("style");for(b=0;b<u.length;b++){var i;if((o=(i=u[b]).getAttribute("data-href"))===d||o===t)return f()}var l=document.createElement("link");l.rel="stylesheet",l.type="text/css",l.onload=f,l.onerror=function(f){var d=f&&f.target&&f.target.src||t,r=new Error("Loading CSS chunk "+e+" failed.\n("+d+")");r.code="CSS_CHUNK_LOAD_FAILED",r.request=d,delete a[e],l.parentNode.removeChild(l),c(r)},l.href=t,document.getElementsByTagName("head")[0].appendChild(l)})).then((function(){a[e]=0})));var c=t[e];if(0!==c)if(c)f.push(c[2]);else{var d=new Promise((function(f,d){c=t[e]=[f,d]}));f.push(c[2]=d);var r,b=document.createElement("script");b.charset="utf-8",b.timeout=120,n.nc&&b.setAttribute("nonce",n.nc),b.src=function(e){return n.p+"static/js/"+({}[e]||e)+"."+{0:"5bea9e6e",1:"d57dcb57",2:"1117fb1a",3:"d0ad0bbb",4:"183ee92d",5:"80e09f48",6:"6ab56dab",7:"b7808596",8:"6a32c115",9:"fcf2026b",10:"adc2876a",11:"5f7a5e97",12:"263a99af",13:"a0dd302f",14:"1732908f",15:"ac3c0811",16:"d3ac25e3",17:"28b8bbe5",18:"de6b10ac",19:"4d9af3a5",23:"98e97916",24:"81a56e4e",25:"4d7f3144",26:"5913179d",27:"edc906ec",28:"5a84111a",29:"8bae7375",30:"8040c03b",31:"6f11ea93",32:"9d91c1bc",33:"b40a1348",34:"24b5e8fa",35:"ae5f2081",36:"715cc901",37:"0db1c6a6",38:"1781a2b8",39:"b7f1f18c",40:"ac9be557",41:"66aefc7b",42:"fcf7e130",43:"e43c5ae7",44:"99716b6e",45:"ba33c766",46:"7eac61ad",47:"6e8aadf5",48:"3f8bfc57",49:"dfd44387",50:"56b6e356",51:"67dbf3f8",52:"0e8f15dc",53:"81669da9",54:"cf66b7ed",55:"b79a4c47",56:"55611484",57:"69469ae8",58:"70803313",59:"8869bd52",60:"cd3bf991",61:"5b9b4a13",62:"8209ee4b",63:"fb07f8f3",64:"b2ed4f77",65:"f53f8d10",66:"78d054e6",67:"814d6530",68:"5a672210",69:"a1cfd672",70:"1e4aaad6",71:"3056761e",72:"b58d12e8",73:"415ac8e4",74:"ffbdbff5",75:"48f4bb41",76:"370b9cda",77:"b0eb2861",78:"a146fb16",79:"f9980389",80:"d9949ef3",81:"47033641",82:"8146bf7e",83:"675a4dbf",84:"95a70c01",85:"fe38ed8a",86:"32c64e85",87:"d3b0ed0f",88:"a162927d",89:"58840c8f",90:"4bcf26d1",91:"61013b63",92:"6a825bf4",93:"7fddae89",94:"5507f16c",95:"d7d7a60d",96:"846cb282",97:"e89006b7",98:"c255674e",99:"5764bfa4",100:"01b9b42b",101:"52a04532",102:"7adf57a2",103:"d1ef77ad",104:"e11c8473",105:"7ff7695a",106:"e134d002",107:"f90c7dfd",108:"d3b80736",109:"83a66afd",110:"aef3302b",111:"d600f038",112:"bbcce0ba",113:"2829fde9",114:"f32c619d",115:"983c8abd",116:"4e606b7d",117:"2eb3265a",118:"b58fb15a",119:"e6d6ddd2",120:"cfd4f56c",121:"d3366984",122:"fdd0b159",123:"e258eaa8",124:"1b3bedf8",125:"08322cc4",126:"89443c1c",127:"6be41afe",128:"e9adaf74",129:"c0c171ab",130:"f1866d6c",131:"7ef01f9d",132:"84de9077",133:"460b6220",134:"36023d81",135:"eac3cd1a",136:"1bf19914",137:"3f5b1a67",138:"6aa18814",139:"345a1b55",140:"0eb04bda",141:"9dac86d0",142:"12272dec",143:"02cfb24c",144:"0ef6ef12",145:"0c8fa7a1",146:"cf4d0309"}[e]+".chunk.js"}(e);var o=new Error;r=function(f){b.onerror=b.onload=null,clearTimeout(u);var c=t[e];if(0!==c){if(c){var d=f&&("load"===f.type?"missing":f.type),a=f&&f.target&&f.target.src;o.message="Loading chunk "+e+" failed.\n("+d+": "+a+")",o.name="ChunkLoadError",o.type=d,o.request=a,c[1](o)}t[e]=void 0}};var u=setTimeout((function(){r({type:"timeout",target:b})}),12e4);b.onerror=b.onload=r,document.head.appendChild(b)}return Promise.all(f)},n.m=e,n.c=d,n.d=function(e,f,c){n.o(e,f)||Object.defineProperty(e,f,{enumerable:!0,get:c})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,f){if(1&f&&(e=n(e)),8&f)return e;if(4&f&&"object"==typeof e&&e&&e.__esModule)return e;var c=Object.create(null);if(n.r(c),Object.defineProperty(c,"default",{enumerable:!0,value:e}),2&f&&"string"!=typeof e)for(var d in e)n.d(c,d,function(f){return e[f]}.bind(null,d));return c},n.n=function(e){var f=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(f,"a",f),f},n.o=function(e,f){return Object.prototype.hasOwnProperty.call(e,f)},n.p="/",n.oe=function(e){throw console.error(e),e};var b=this.webpackJsonpcupoyweb=this.webpackJsonpcupoyweb||[],o=b.push.bind(b);b.push=f,b=b.slice();for(var u=0;u<b.length;u++)f(b[u]);var i=o;c()}([])</script><script src="/static/js/22.0bc24b99.chunk.js"></script><script src="/static/js/main.80166564.chunk.js"></script></body></html>
